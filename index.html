@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inheritance and prototype</title>
+</head>
+<body style="background-image: radial-gradient(rgba(77, 173, 77, 0.314) ,yellow ,white) ;">
+    <pre>
+        Q1.	Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype			
+        
+        const parent={
+            disply : function () {
+                console.log("hi...........");
+            }
+        
+        }
+        parent.disply();
+        
+        const child1=Object.create(parent)
+        child1.name=function () {
+            console.log("this is child Obj");
+            
+        }
+        child1.age=23;
+        child1.name();
+        child1.disply();
+        
+        const child2=Object.create(parent);
+        child2.name();
+        child2.disply();
+        child2.age=23;																						
+    </pre>
+    <hr>
+    <pre>
+        Q2.	Write code to explain prototype chaining
+        
+        function promiseChain(alpha, timeout){
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                   console.log(alpha);
+                   res("This promise is resolved!!!...")
+                }, timeout);
+            })
+        }
+        
+        
+        function visible(){
+            promiseChain("A", 2000)
+            .then(() => promiseChain("E", 4000))
+            .then(() => promiseChain("I", 1000))
+            .then(() => promiseChain("O", 2000))
+            .then(() => promiseChain("U", 5000))
+        }
+    </pre>
+    <hr>
+    <pre>
+        Q3.	Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays																									
+
+        const list = [[2, 9, 1, 2]
+        ,[2, 3, 9, 4],
+        [4, 7, 8, 1]]
+
+let op = list.reduce((op,inp)=>{
+   inp.forEach((e,i)=>op[i] = op[i] ? op[i]+e : e)
+   return op
+},[])
+
+console.log(op)
+        
+    </pre>
+    <hr>
+    <pre>
+        Q4.	Write a JavaScript function to retrieve all the names of object's own and inherited properties.
+        
+        const obj = {a: 1, b: 2};
+const inheritedObj = Object.create(obj);
+inheritedObj.c = 3;
+
+console.log(Object.getOwnPropertyNames(inheritedObj));
+    </pre>
+</body>
+<script src="./inher&Proto.js"></script>
+</html>
